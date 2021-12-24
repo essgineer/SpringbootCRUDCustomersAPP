@@ -18,8 +18,8 @@ public class CustomerController {
 
 	@RequestMapping("/")
 	public ModelAndView home() {
-		System.out.println("****home****");
-		List<Customer> listCustomer =  (List<Customer>) repo.findAll();
+	    System.out.println("****home****");
+	    List<Customer> listCustomer =  (List<Customer>) repo.findAll();
 	    System.out.println("Customer List: "+listCustomer);
 	    ModelAndView mv = new ModelAndView("user-list.jsp");
 	    mv.addObject("listCustomer", listCustomer);
@@ -31,7 +31,7 @@ public class CustomerController {
 		System.out.println("****addCustomer****");
 		ModelAndView mv=new ModelAndView("user-form.jsp");
 		Customer customer=repo.findById(c.getId()).orElse(null);                          
-	    System.out.println("id filled in Form page:"+c.getId());
+		System.out.println("id filled in Form page:"+c.getId());
 	   	if(customer==null) {
 			System.out.println("new custommer in the List");
 			repo.save(c);
@@ -40,7 +40,7 @@ public class CustomerController {
 		}
 		System.out.println("id: "+c.getId()+" already in the list: "+repo.findById(c.getId()));
 		mv.setViewName("/");   
-	    return mv; 
+		return mv; 
 	}	
 	
 	@RequestMapping("/updateCustomer")
